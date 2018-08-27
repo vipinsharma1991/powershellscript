@@ -1,3 +1,3 @@
 #!/bin/bash
 sudo -i
-echo 'vipin.sharma ALL=(ALL:ALL) ALL' >> /etc/sudoers
+echo 'vipin.sharma ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
