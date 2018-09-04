@@ -13,3 +13,4 @@ Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine
 net stop winrm
 sc config winrm start=auto
 net start winrm
+xcopy windows_policies.inf C:\ /E /C /H /R /K /O /Y
