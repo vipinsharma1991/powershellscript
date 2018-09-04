@@ -9,7 +9,7 @@ winrm set winrm/config/service/auth '@{Basic="true"}'
 netsh advfirewall firewall add rule name="WinRM 5985" protocol=TCP dir=in localport=5985 action=allow
 netsh advfirewall firewall add rule name="WinRM 5986" protocol=TCP dir=in localport=5986 action=allow
 
-Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled false"
+Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled false
 
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine
 net stop winrm
