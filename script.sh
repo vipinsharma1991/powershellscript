@@ -1,3 +1,3 @@
 #!/bin/bash
 sudo -i
-echo 'vipin.sharma ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+echo 'pconnectadmin ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
