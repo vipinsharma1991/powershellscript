@@ -1,4 +1,4 @@
-wmic useraccount where "name='vipin.sharma'" set PasswordExpires=FALSE
+wmic useraccount where "name='pconnectadmin'" set PasswordExpires=FALSE
 
 winrm quickconfig -q
 winrm set winrm/config/winrs '@{MaxMemoryPerShellMB="4096"}'
