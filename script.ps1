@@ -1,3 +1,5 @@
+
+Param([Parameter(Mandatory=$true)][string]$username)
 wmic useraccount where "name='pconnectadmin'" set PasswordExpires=FALSE
 
 winrm quickconfig -q
@@ -13,3 +15,4 @@ net stop winrm
 sc config winrm start=auto
 net start winrm
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine
+NET USER $username "Passw0rd123" /ADD
