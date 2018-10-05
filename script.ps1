@@ -1,3 +1,5 @@
+Param([Parameter(Mandatory=$true)][string]$username)
+Param([Parameter(Mandatory=$true)][string]$username2)
 winrm quickconfig -q
 winrm set winrm/config/winrs '@{MaxMemoryPerShellMB="4096"}'
 winrm set winrm/config '@{MaxTimeoutms="1800000"}'
@@ -11,3 +13,7 @@ net stop winrm
 sc config winrm start=auto
 net start winrm
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine
+NET USER $username "Passw0rd@123" /ADD
+Add-LocalGroupMember -Group "Administrators" -Member "$username"
+NET USER $username2 "Passw0rd@123" /ADD
+Add-LocalGroupMember -Group "Administrators" -Member "$username2"
