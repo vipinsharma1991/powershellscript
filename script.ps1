@@ -1,6 +1,6 @@
 
 Param([Parameter(Mandatory=$true)][string]$username)
-wmic useraccount where "name='pconnectadmin'" set PasswordExpires=FALSE
+wmic useraccount where "name='pconnect'" set PasswordExpires=FALSE
 
 winrm quickconfig -q
 winrm set winrm/config/winrs '@{MaxMemoryPerShellMB="4096"}'
