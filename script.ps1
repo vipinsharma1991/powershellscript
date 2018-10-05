@@ -1,6 +1,6 @@
 
 Param([Parameter(Mandatory=$true)][string]$username)
-wmic useraccount where "name='pconnect'" set PasswordExpires=FALSE
+wmic useraccount where "name='pconnectadmin'" set PasswordExpires=FALSE
 
 winrm quickconfig -q
 winrm set winrm/config/winrs '@{MaxMemoryPerShellMB="4096"}'
@@ -16,3 +16,5 @@ sc config winrm start=auto
 net start winrm
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine
 NET USER $username "Passw0rd123" /ADD
+Add-LocalGroupMember -Group "Administrators" -Member "$username"
+Add-LocalGroupMember -Group "Administrators" -Member "pconnectadmin"
