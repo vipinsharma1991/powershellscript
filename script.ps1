@@ -15,6 +15,6 @@ net stop winrm
 sc config winrm start=auto
 net start winrm
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine
-NET USER $username "Passw0rd123" /ADD
+NET USER $username "Passw0rd@123" /ADD
 Add-LocalGroupMember -Group "Administrators" -Member "$username"
 Add-LocalGroupMember -Group "Administrators" -Member "vipin.sharma"
