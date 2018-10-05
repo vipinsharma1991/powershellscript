@@ -1,6 +1,6 @@
 
 Param([Parameter(Mandatory=$true)][string]$username)
-wmic useraccount where "name='vipin.sharma'" set PasswordExpires=FALSE
+
 
 winrm quickconfig -q
 winrm set winrm/config/winrs '@{MaxMemoryPerShellMB="4096"}'
@@ -17,4 +17,3 @@ net start winrm
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine
 NET USER $username "Passw0rd@123" /ADD
 Add-LocalGroupMember -Group "Administrators" -Member "$username"
-Add-LocalGroupMember -Group "Administrators" -Member "vipin.sharma"
