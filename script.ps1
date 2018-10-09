@@ -14,4 +14,4 @@ sc config winrm start=auto
 net start winrm
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine
 NET USER "$username" "Passw0rd@123" /ADD
-Add-LocalGroupMember -Group "Administrators" -Member "$username"
+net localgroup administrators "$username" /add
