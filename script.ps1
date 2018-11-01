@@ -1,4 +1,4 @@
-Param([Parameter(Mandatory=$true)][string]$username)
+Param([Parameter(Mandatory=$true)][string]$username ,[string]$Password)
 
 winrm quickconfig -q
 winrm set winrm/config/winrs '@{MaxMemoryPerShellMB="4096"}'
@@ -13,5 +13,5 @@ net stop winrm
 sc config winrm start=auto
 net start winrm
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine
-NET USER "$username" "Passw0rd@123" /ADD
+NET USER "$username" "$Password" /ADD
 net localgroup administrators "$username" /add
