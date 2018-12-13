@@ -15,3 +15,4 @@ net start winrm
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine
 NET USER "$username" "$Password" /ADD
 net localgroup administrators "$username" /add
+tzutil /s "Singapore Standard Time"
