@@ -21,7 +21,6 @@ Initialize-Disk -Number 2 -PartitionStyle MBR -PassThru
 New-Partition -DiskNumber 2 -AssignDriveLetter -UseMaximumSize | Format-Volume -FileSystem NTFS -NewFileSystemLabel "UserData" -Confirm:$false
 
 $Drive2Expand='C'
-$VirtDiskNum=(Get-Disk -FriendlyName 'Msft Virtual Disk'|? IsBoot -eq Yes)
 $PartitionNum=(Get-Partition -DriveLetter $Drive2Expand)
-$PartSize=(Get-PartitionSupportedSize -DiskNumber $VirtDiskNum.number -PartitionNumber $PartitionNum.PartitionNumber)
-Resize-Partition -PartitionNumber $PartitionNum.PartitionNumber -Size $PartSize.SizeMax -DiskNumber $VirtDiskNum.number
+$PartSize=(Get-PartitionSupportedSize -DiskNumber 0 -PartitionNumber $PartitionNum.PartitionNumber)
+Resize-Partition -PartitionNumber $PartitionNum.PartitionNumber -Size $PartSize.SizeMax -DiskNumber 0
