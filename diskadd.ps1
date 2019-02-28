@@ -24,3 +24,6 @@ $Drive2Expand='C'
 $PartitionNum=(Get-Partition -DriveLetter $Drive2Expand)
 $PartSize=(Get-PartitionSupportedSize -DiskNumber 0 -PartitionNumber $PartitionNum.PartitionNumber)
 Resize-Partition -PartitionNumber $PartitionNum.PartitionNumber -Size $PartSize.SizeMax -DiskNumber 0
+
+$DvdDrive = Get-CimInstance -Class Win32_Volume -Filter "driveletter='E:'"
+Set-CimInstance -InputObject $DvdDrive -Arguments @{DriveLetter="X:"}
