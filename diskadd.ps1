@@ -26,4 +26,4 @@ $PartSize=(Get-PartitionSupportedSize -DiskNumber 0 -PartitionNumber $PartitionN
 Resize-Partition -PartitionNumber $PartitionNum.PartitionNumber -Size $PartSize.SizeMax -DiskNumber 0
 
 $DvdDrive = Get-CimInstance -Class Win32_Volume -Filter "driveletter='E:'"
-Set-CimInstance -InputObject $DvdDrive -Arguments @{DriveLetter="X:"}
+Set-CimInstance -InputObject $DvdDrive -Arguments @{DriveLetter="Y:"}
