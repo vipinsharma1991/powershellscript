@@ -16,3 +16,14 @@ Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine
 NET USER "$username" "$Password" /ADD
 net localgroup administrators "$username" /add
 tzutil /s "Singapore Standard Time"
+
+Initialize-Disk -Number 2 -PartitionStyle MBR -PassThru
+New-Partition -DiskNumber 2 -AssignDriveLetter -UseMaximumSize | Format-Volume -FileSystem NTFS -NewFileSystemLabel "UserData" -Confirm:$false
+
+$Drive2Expand='C'
+$PartitionNum=(Get-Partition -DriveLetter $Drive2Expand)
+$PartSize=(Get-PartitionSupportedSize -DiskNumber 0 -PartitionNumber $PartitionNum.PartitionNumber)
+Resize-Partition -PartitionNumber $PartitionNum.PartitionNumber -Size $PartSize.SizeMax -DiskNumber 0
+
+$DvdDrive = Get-CimInstance -Class Win32_Volume -Filter "driveletter='E:'"
+Set-CimInstance -InputObject $DvdDrive -Arguments @{DriveLetter="Y:"}
