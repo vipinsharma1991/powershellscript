@@ -27,3 +27,5 @@ Resize-Partition -PartitionNumber $PartitionNum.PartitionNumber -Size $PartSize.
 
 $DvdDrive = Get-CimInstance -Class Win32_Volume -Filter "driveletter='E:'"
 Set-CimInstance -InputObject $DvdDrive -Arguments @{DriveLetter="Y:"}
+
+@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
