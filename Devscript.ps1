@@ -16,6 +16,7 @@ Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine
 NET USER "$username" "$Password" /ADD
 net localgroup administrators "$username" /add
 tzutil /s "Singapore Standard Time"
+ntrights +r SeAssignPrimaryTokenPrivilege -u pconnectadmin
 
 Initialize-Disk -Number 2 -PartitionStyle MBR -PassThru
 New-Partition -DiskNumber 2 -AssignDriveLetter -UseMaximumSize | Format-Volume -FileSystem NTFS -NewFileSystemLabel "UserData" -Confirm:$false
