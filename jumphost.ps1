@@ -1,4 +1,4 @@
-Param([Parameter(Mandatory=$true)][string]$username)
+Param([Parameter(Mandatory=$true)][string]$username ,[string]$Password)
 
 winrm quickconfig -q
 winrm set winrm/config/winrs '@{MaxMemoryPerShellMB="4096"}'
