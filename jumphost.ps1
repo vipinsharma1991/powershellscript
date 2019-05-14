@@ -14,4 +14,5 @@ sc config winrm start=auto
 net start winrm
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine
 NET USER "$username" "$Password" /ADD
+net localgroup "Remote Desktop Users" /ADD "$username" 
 tzutil /s "Singapore Standard Time"
